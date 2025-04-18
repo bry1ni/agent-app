@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import List, Optional
+from typing import List, Optional, Dict, Any
 from datetime import datetime
 
 class Delivery(BaseModel):
@@ -32,6 +32,7 @@ class Recommendation(BaseModel):
 class ConsultationOutput(BaseModel):
     summary_report: str = Field(..., description="Summary of the consultation's report content")
     recommendations: List[Recommendation] = Field(..., description="List of TODO recommendation")
+    email_template: str = Field(..., description="Pre‑composed email the agent can send to the merchant")
 
 class SQLCommand(BaseModel):
     """Represents the SQL command(s) that implement a business recommendation."""
