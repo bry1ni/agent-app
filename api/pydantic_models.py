@@ -22,12 +22,22 @@ class OrderedDeliveryList(BaseModel):
 class BusinessData(BaseModel):
     last_month_revenue: str = Field(..., description="Progress on last month revenue")
 
+class Recommendation(BaseModel):
+    """Represents a business recommendation that needs to be implemented in the database."""
+    id: Optional[str] = None
+    description: str = Field(..., description="Natural language description of the recommendation")
+    target_table: str = Field(..., description="The primary table affected by this recommendation")
+    additional_context: Optional[dict] = None
+
 class ConsultationOutput(BaseModel):
     summary_report: str = Field(..., description="Summary of the consultation's report content")
-    recommendations: List[str] = Field(..., description="List of TODO recommendation")
-
-class Recommendation(BaseModel):
-    pass
+    recommendations: List[Recommendation] = Field(..., description="List of TODO recommendation")
 
 class SQLCommand(BaseModel):
-    pass
+    """Represents the SQL command(s) that implement a business recommendation."""
+    recommendation_id: Optional[str] = None
+    sql: str = Field(..., description="The SQL command to execute")
+    pre_checks: Optional[List[str]] = None  # Optional verification queries to run before
+    post_checks: Optional[List[str]] = None  # Optional verification queries to run after
+    use_transaction: bool = True
+    created_at: datetime = Field(default_factory=datetime.now)

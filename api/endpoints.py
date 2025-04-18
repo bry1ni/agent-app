@@ -1,5 +1,5 @@
 from api import app
-from api.pydantic_models import ConsultationOutput, BusinessData
+from api.pydantic_models import ConsultationOutput, BusinessData, SQLCommand
 from api.tasks.execute import execute
 from api.tasks.consulte import consulte
 
@@ -13,16 +13,16 @@ async def consulting(
 		request,
 	)
 
-	return response
+	return ConsultationOutput(recommendations=response.recommendations)
 
 
 # scheduling endpoint
 @app.post("/execute")
 async def executing(
-	request: ConsultationOutput,
+	request: ConsultationOutput
 ):
 	response = execute(
 		request,
 	)
 
-	return response
+	return SQLCommand()
