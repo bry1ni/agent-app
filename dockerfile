@@ -2,10 +2,13 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
-RUN pip install uv
+COPY pyproject.toml ./
 
-RUN uv sync
+# Install dependencies
+RUN pip install uv && \
+    uv sync
 
+# Copy application code
 COPY . .
 
 EXPOSE 5001
