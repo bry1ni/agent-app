@@ -5,6 +5,8 @@ from api.tasks.execute import execute
 import logging
 from src.tools.utils import send as send_mail
 import json
+from typing import List
+from src.models.sql_command import SQLCommand
 
 
 logger = logging.getLogger("uvicorn.error")
@@ -27,7 +29,7 @@ async def consult_endpoint(
 		background_tasks.add_task(
 			send_mail,
 			OWNER_EMAIL,                  
-			"Dina",                    
+			"Dina", 
 			[("Weekly summary", result.summary_report)],  
 			result.recommendations,       
 			"https://dashboard.ayorservices.com"
@@ -40,14 +42,20 @@ async def consult_endpoint(
 
 
 # execution endpoint
-@router.post("/execute", response_model=str)
+@router.post("/execute", response_model=List[SQLCommand])
 async def execute_endpoint(request: ConsultationOutput):
 	"""
 	Executes follow-up actions based on consultation result.
 	"""
 	try:
-		return execute(request)
+		result = execute(request)
+		return result
 	except Exception as e:
 		logger.exception("Execution failed")
 		raise HTTPException(status_code=500, detail=str(e))
-	
+
+# test endpoint
+@router.get("/test")
+async def test_endpoint():
+	return {"message": "Hello, World!"}
+

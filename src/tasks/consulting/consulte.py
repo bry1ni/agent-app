@@ -1,5 +1,6 @@
 from datetime import date, timedelta
 import requests
+from typing import Union, Tuple, Optional
 
 API_BASE = "http://127.0.0.1:8000"
 EMAIL     = "patrickloops808@gmail.com"
@@ -7,7 +8,7 @@ PASSWORD  = "Maystro808"
 SHOP_ID   = "1b06a2d6-9e4f-4afd-9aa6-aed77b67119e"
 
 
-def date_range(period: str | int = "week") -> tuple[str, str]:
+def date_range(period: Union[str, int] = "week") -> Tuple[str, str]:
     """Return (start, end) ISO strings for the given period.
 
     • "week"  → last 7 full days (Mon‑Sun style)
@@ -48,7 +49,7 @@ def fetch_order_status(token: str):
     r.raise_for_status()
     return r.json()
 
-def fetch_general_stats(token: str, start_date: str | None = None, end_date: str | None = None):
+def fetch_general_stats(token: str, start_date: Optional[str] = None, end_date: Optional[str] = None):
     if not (start_date and end_date):
         start_date, end_date = date_range("week")
     url = f"{API_BASE}/api/shops/{SHOP_ID}/analytics/general-stats/?start_date={start_date}&end_date={end_date}"
@@ -56,7 +57,7 @@ def fetch_general_stats(token: str, start_date: str | None = None, end_date: str
     r.raise_for_status()
     return r.json()
 
-def fetch_top_sales(token: str, start_date: str | None = None, end_date: str | None = None):
+def fetch_top_sales(token: str, start_date: Optional[str] = None, end_date: Optional[str] = None):
     if not (start_date and end_date):
         start_date, end_date = date_range("week")
     url = f"{API_BASE}/api/shops/{SHOP_ID}/analytics/top-sales/?start_date={start_date}&end_date={end_date}"

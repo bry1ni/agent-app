@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
-from api import endpoints
 
 APP_TITLE = "DLM"
 APP_VERSION = "1.0.0"
@@ -16,6 +15,8 @@ app = FastAPI(
 	# redoc_url=None,
 	# openapi_url=None,
 )
+
+from api import endpoints
 
 app.include_router(endpoints.router)
 

@@ -1,9 +1,10 @@
 from agno.tools import tool
+from typing import Optional
 
 from src.tasks.consulting.consulte import date_range, get_token, fetch_dashboard_stats, fetch_order_status, fetch_general_stats, fetch_top_sales, fetch_order_analytics
 
 @tool
-def competitor_analysis_tool(business_data: dict | None = None) -> dict:
+def competitor_analysis_tool(business_data: Optional[dict] = None) -> dict:
     token = get_token()
 
     this_start, today         = date_range("week")
