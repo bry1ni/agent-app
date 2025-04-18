@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import List, Optional, Dict, Any, Union
+from typing import List, Optional, Dict, Any
 from datetime import datetime
 
 class Delivery(BaseModel):
@@ -26,22 +26,12 @@ class Recommendation(BaseModel):
     """Represents a business recommendation that needs to be implemented in the database."""
     id: Optional[str] = None
     description: str = Field(..., description="Natural language description of the recommendation")
-    target_table: Optional[str] = Field(None, description="The primary table affected by this recommendation")
+    target_table: str = Field(..., description="The primary table affected by this recommendation")
     additional_context: Optional[dict] = None
-
-    @classmethod
-    def __get_validators__(cls):
-        yield cls.validate
-
-    @classmethod
-    def validate(cls, v):
-        if isinstance(v, str):
-            return cls(description=v)
-        return v
 
 class ConsultationOutput(BaseModel):
     summary_report: str = Field(..., description="Summary of the consultation's report content")
-    recommendations: List[Union[str, Recommendation]] = Field(..., description="List of TODO recommendation")
+    recommendations: List[str] = Field(..., description="List of TODO recommendation")
     #email_template: str = Field(..., description="Pre‑composed email the agent can send to the merchant")
 
 class SQLCommand(BaseModel):
