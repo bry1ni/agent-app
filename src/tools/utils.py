@@ -70,18 +70,21 @@ def send(to: str,
 		insight_table: List[Tuple[str, str]],
 		recs: List[str],
 		dashboard_url: str,
-		tasks_line: str = ""):
+		tasks_line: str = "",
+		email_subject: str = EMAIL_SUBJECT,
+		smtp_user: str = SMTP_USER,
+		smtp_pass: str = SMTP_PASS):
 	html_body, text_body = render_email(first_name, insight_table, recs, dashboard_url)
 	msg = EmailMessage()
-	msg["Subject"] = EMAIL_SUBJECT
-	msg["From"] = SMTP_USER
+	msg["Subject"] = email_subject
+	msg["From"] = smtp_user
 	msg["To"] = to
 	msg.set_content(text_body)
 	msg.add_alternative(html_body, subtype="html")
 
 	with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as s:
 		s.starttls()
-		s.login(SMTP_USER, SMTP_PASS)
+		s.login(smtp_user, smtp_pass)
 		s.send_message(msg)
  
  

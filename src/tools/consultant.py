@@ -2,6 +2,7 @@ from agno.tools import tool
 from typing import Optional
 
 from src.tasks.consulting.consulte import date_range, get_token, fetch_dashboard_stats, fetch_order_status, fetch_general_stats, fetch_top_sales, fetch_order_analytics
+from src.tools.utils import send as send_email
 
 @tool
 def competitor_analysis_tool(business_data: Optional[dict] = None) -> dict:
@@ -34,3 +35,8 @@ def competitor_analysis_tool(business_data: Optional[dict] = None) -> dict:
             },
         }
     }
+
+@tool
+def email_user(to: str, subject: str, body: str) -> dict:
+    return send_email(to, subject, body)
+

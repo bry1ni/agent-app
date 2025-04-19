@@ -28,3 +28,11 @@ a single‑line JSON object describing the action.
     `"collection"`, `"announcement_bar"`.  
 • Put additional details inside `"parameters"` (from, to, currency,
     banner_text, deadline, priority, etc.).
+
+## EMAIL SENDING
+- Use the email tool to send an email to the receiver with the recommendations and the summary report
+- The email should be sent from the sender email address
+- The email should be sent to the receiver email address
+- The email should have the subject "Weekly summary"
+- The email should have the body "The following recommendations were made to the database: <recommendations> and the following summary report was generated: <summary_report>"
+- The email should be sent as soon as the recommendations and the summary report are generated

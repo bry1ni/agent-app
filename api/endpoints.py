@@ -12,7 +12,7 @@ from src.models.sql_command import SQLCommand
 logger = logging.getLogger("uvicorn.error")
 
 router = APIRouter(prefix="/v1") 
-OWNER_EMAIL = "d.fettache@esi-sba.dz" 
+OWNER_EMAIL = "r.benatallah01@gmail.com" 
 
 # consultation endpoint
 @router.post("/consult", response_model=ConsultationOutput)
