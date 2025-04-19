@@ -12,7 +12,6 @@ from src.models.sql_command import SQLCommand
 logger = logging.getLogger("uvicorn.error")
 
 router = APIRouter(prefix="/v1") 
-OWNER_EMAIL = "r.benatallah01@gmail.com" 
 
 # consultation endpoint
 @router.post("/consult", response_model=ConsultationOutput)
@@ -28,8 +27,8 @@ async def consult_endpoint(
 		result = await consulte(request)
 		background_tasks.add_task(
 			send_mail,
-			OWNER_EMAIL,                  
-			"Dina", 
+			request.user_email,                  
+			request.user_name, 
 			[("Weekly summary", result.summary_report)],  
 			result.recommendations,       
 			"https://dashboard.ayorservices.com"

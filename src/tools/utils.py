@@ -29,8 +29,8 @@ SMTP_PASS = "mkptddorddyopdyc"
 
 def _html_rows(table: List[Tuple[str, str]]) -> str:
 	return "\n".join(
-		f"<tr><td style='padding:10px 12px;border-top:1px solid #e9ecf8;'>{html.escape(i)}</td>"
-		f"<td style='padding:10px 12px;border-top:1px solid #e9ecf8;'>{html.escape(a)}</td></tr>"
+		f"<tr><td style='padding:10px 12px;border-top:1px solid #e9ecf8;'>{html.escape(str(i) if i is not None else '')}</td>"
+		f"<td style='padding:10px 12px;border-top:1px solid #e9ecf8;'>{html.escape(str(a) if a is not None else '')}</td></tr>"
 		for i, a in table
 	)
 

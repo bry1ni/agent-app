@@ -7,6 +7,7 @@ from agno.agent import RunResponse
 from api.pydantic_models import BusinessData, ConsultationOutput
 from src.agents.consultant import consultant
 from src.tools.utils import render_email, send as send_mail, split_recs_and_tasks
+from src.tools.consultant import competitor_analysis_tool  
 
 DASHBOARD_URL = "https://dashboard.ayorservices.com"
 
@@ -82,6 +83,4 @@ async def consulte(request: BusinessData) -> ConsultationOutput:
         dashboard_url=DASHBOARD_URL,
         tasks_line=tasks_json_line,
     )
-
-    output.email_template = html_body
     return output

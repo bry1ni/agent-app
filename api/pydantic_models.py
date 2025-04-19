@@ -21,8 +21,10 @@ class OrderedDeliveryList(BaseModel):
 
 class BusinessData(BaseModel):
     user_id: str = Field(..., description="Unique identifier for the user")
-    last_month_revenue: str = Field(..., description="Progress on last month revenue")
+    user_name: str = Field(..., description="Name of the user")
     user_email: str = Field(..., description="Email address of the user")
+    last_month_revenue: str = Field(..., description="Progress on last month revenue")
+    
 
 class Recommendation(BaseModel):
     """Represents a business recommendation that needs to be implemented in the database."""
@@ -34,7 +36,6 @@ class Recommendation(BaseModel):
 class ConsultationOutput(BaseModel):
     summary_report: Optional[str] = Field(None, description="Summary of the consultation's report content")
     recommendations: List[str] = Field(..., description="List of TODO recommendation")
-    email_template: str = Field(..., description="Pre‑composed email the agent can send to the merchant")
 
 class SQLCommand(BaseModel):
     """Represents the SQL command(s) that implement a business recommendation."""
