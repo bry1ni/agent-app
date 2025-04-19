@@ -16,7 +16,6 @@ app = FastAPI(
 from api import endpoints
 
 app.include_router(endpoints.router)
-app.include_router(endpoints.root_router)
 
 origins = [
     "http://localhost:5173",
