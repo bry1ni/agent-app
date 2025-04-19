@@ -18,7 +18,7 @@ def execute(request: ConsultationOutput) -> List[SQLCommand]:
                 recommendation
             )
             result = extract_response_from_agent(response, "executor")
-            all_sql.append(SQLCommand(sql=result["sql"]))
+            all_sql.append(SQLCommand(**result))
 
         # Join all SQL commands with newlines
         return all_sql
