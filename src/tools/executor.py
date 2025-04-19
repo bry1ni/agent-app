@@ -1,6 +1,6 @@
 from agno.tools import tool
 from typing import Dict, Any
-from src.tasks.executing.execute import execute_sql_command
+from src.tasks.executing.execute import update_product
 from src.tools.utils import send as send_email
 
 
@@ -26,7 +26,7 @@ def send_and_execute_sql_command(sql_command: str) -> Dict[str, Any]:
             - rows_affected (int): Number of rows affected for DML queries.
             - error (str | None): Error message, if any.
     """
-    return execute_sql_command(sql_command)
+    return update_product(sql_command)
 
 
 @tool

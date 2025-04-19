@@ -7,9 +7,8 @@ from agno.agent import RunResponse
 from api.pydantic_models import BusinessData, ConsultationOutput
 from src.agents.consultant import consultant
 from src.tools.utils import render_email, send as send_mail, split_recs_and_tasks
-from src.tools.consultant import competitor_analysis_tool  
 
-DASHBOARD_URL = "https://backend.dev.ayorservices.com/dashboard"
+DASHBOARD_URL = "https://dashboard.ayorservices.com"
 
 
 def analytics_to_insights(a: dict) -> List[Tuple[str, str]]:
@@ -42,7 +41,6 @@ def analytics_to_insights(a: dict) -> List[Tuple[str, str]]:
         insights.append(("Could not parse analytics JSON", "Review API payload"))
 
     return insights
-
 
 async def consulte(request: BusinessData) -> ConsultationOutput:
     """

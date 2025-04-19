@@ -2,7 +2,7 @@ from datetime import date, timedelta
 import requests
 from typing import Union, Tuple, Optional
 
-API_BASE = "https://backend.dev.ayorservices.com"
+API_BASE = "https://dashboard.ayorservices.com"
 EMAIL     = "patrickloops808@gmail.com"
 PASSWORD  = "Maystro808"
 SHOP_ID   = "1b06a2d6-9e4f-4afd-9aa6-aed77b67119e"
