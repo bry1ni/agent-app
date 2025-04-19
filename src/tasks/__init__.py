@@ -1,4 +1,7 @@
 import os
+from dotenv import load_dotenv, find_dotenv
+
+load_dotenv(find_dotenv())
 
 API_BASE = os.getenv("API_BASE")
 EMAIL_AUTH = os.getenv("EMAIL_AUTH")

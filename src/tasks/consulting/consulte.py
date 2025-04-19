@@ -2,6 +2,7 @@ from datetime import date, timedelta
 import requests
 from typing import Union, Tuple, Optional
 
+from api.pydantic_models import StoreAnalyticsSchema
 from src.tasks import API_BASE, EMAIL_AUTH, PASSWORD_AUTH, SHOP_ID
 from src.tasks.utils import auth_hdr, get_token
 
@@ -59,3 +60,36 @@ def fetch_order_analytics(token: str):
     r = requests.get(url, headers=auth_hdr(token))
     r.raise_for_status()
     return r.json()
+
+def get_complete_analytics(token: str = get_token(), period: Union[str, int] = "week") -> StoreAnalyticsSchema:
+    """Fetch all analytics data and return in a structured format.
+    
+    Args:
+        token: Authentication token
+        period: Time period for analysis ("week", "month", or number of days)
+    
+    Returns:
+        Complete analytics data in a structured format
+    """
+    # Get date range
+    start_date, end_date = date_range(period)
+    
+    # Fetch all data
+    dashboard = fetch_dashboard_stats(token)
+    order_status = fetch_order_status(token)
+    general_stats = fetch_general_stats(token, start_date, end_date)
+    top_sales = fetch_top_sales(token, start_date, end_date)
+    order_analytics = fetch_order_analytics(token)
+    
+    # Assemble complete response
+    return {
+        "dashboard_stats": dashboard,
+        "order_status": order_status,
+        "general_stats": general_stats,
+        "top_sales": top_sales,
+        "order_analytics": order_analytics,
+        "time_period": {
+            "start_date": start_date,
+            "end_date": end_date
+        }
+    }
