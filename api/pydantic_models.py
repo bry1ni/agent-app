@@ -30,7 +30,7 @@ class Recommendation(BaseModel):
     additional_context: Optional[dict] = None
 
 class ConsultationOutput(BaseModel):
-    summary_report: str = Field(..., description="Summary of the consultation's report content")
+    summary_report: Optional[str] = Field(None, description="Summary of the consultation's report content")
     recommendations: List[str] = Field(..., description="List of TODO recommendation")
     #email_template: str = Field(..., description="Pre‑composed email the agent can send to the merchant")
 
