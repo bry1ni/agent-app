@@ -10,10 +10,7 @@ APP_DESCRIPTION = "DLM works to help your business scale"
 app = FastAPI(
 	title=APP_TITLE,
 	version=APP_VERSION,
-	description=APP_DESCRIPTION,
-	# docs_url=None,  # disable the doc to call it with a lock behind a simple auth
-	# redoc_url=None,
-	# openapi_url=None,
+	description=APP_DESCRIPTION
 )
 
 from api import endpoints
@@ -22,9 +19,8 @@ app.include_router(endpoints.router)
 app.include_router(endpoints.root_router)
 
 origins = [
-    "http://localhost:5173",  # Your frontend origin
-    "https://storm-api-b2zj.onrender.com",  # Your API origin
-    "*"  # For development, you might want to remove this in production
+    "http://localhost:5173",
+    "https://storm-api-b2zj.onrender.com"
 ]
 
 app.add_middleware(
