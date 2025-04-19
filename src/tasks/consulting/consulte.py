@@ -2,11 +2,8 @@ from datetime import date, timedelta
 import requests
 from typing import Union, Tuple, Optional
 
-API_BASE = "https://dashboard.ayorservices.com"
-EMAIL     = "patrickloops808@gmail.com"
-PASSWORD  = "Maystro808"
-SHOP_ID   = "1b06a2d6-9e4f-4afd-9aa6-aed77b67119e"
-
+from src.tasks import API_BASE, EMAIL_AUTH, PASSWORD_AUTH, SHOP_ID
+from src.tasks.utils import auth_hdr, get_token
 
 def date_range(period: Union[str, int] = "week") -> Tuple[str, str]:
     """Return (start, end) ISO strings for the given period.
@@ -26,14 +23,6 @@ def date_range(period: Union[str, int] = "week") -> Tuple[str, str]:
         raise ValueError("period must be 'week', 'month', or an int")
     start = today - delta
     return start.isoformat(), today.isoformat()
-
-def get_token() -> str:
-    r = requests.post(f"{API_BASE}/auth/login/", json={"email": EMAIL, "password": PASSWORD})
-    r.raise_for_status()
-    return r.json()["access"]
-
-def auth_hdr(token: str) -> dict[str, str]:
-    return {"Authorization": f"Bearer {token}"}
 
 # ---------- fetchers -------------------------------------------------
 

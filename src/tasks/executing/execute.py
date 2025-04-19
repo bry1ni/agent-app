@@ -1,9 +1,9 @@
 from fastapi import HTTPException
 import requests
 from src.tasks.utils import get_token, auth_hdr
-from src.tasks import API_BASE
+from src.tasks import API_BASE, SHOP_ID
 
-def update_product(payload: dict, shop_id: str, id: str):
+def update_product(payload: dict, id: str, shop_id: str = SHOP_ID):
     token = get_token()
     endpoint = f"{API_BASE}/api/shops/{shop_id}/products/{id}/"
 
