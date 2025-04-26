@@ -1,17 +1,12 @@
 [project]
-name = "dlm"
-version = "0.1.0"
-description = "Add your description here"
+name = "Your app name here"
+version = "0.0.0"
+description = "Add your app description here"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
     "agno>=1.3.3",
     "fastapi>=0.115.12",
-    "openai>=1.75.0",
-    "psycopg2-binary>=2.9.10",
     "pydantic>=2.11.3",
-    "requests>=2.32.3",
-    "typing-extensions>=4.5.0",
     "uvicorn>=0.34.1",
-    "yfinance>=0.2.55",
 ]

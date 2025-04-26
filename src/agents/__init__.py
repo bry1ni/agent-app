@@ -6,6 +6,5 @@ gpt = OpenAIChat(
 )
 
 AGENT_RESPONSE_KEYS = {
-    "consultant": ["summary_report", "recommendations"],
-    "executor": ["sql", "action", "action_type", "target", "preview"],
+    "agent": ["answer"],
 }

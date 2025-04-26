@@ -15,9 +15,9 @@ def extract_response_from_agent(response, agent_name):
 	# Get expected keys for the agent, default to an empty list if not found
 
 	expected_keys = AGENT_RESPONSE_KEYS.get(agent_name, [])
-	answer = response.content  # ? handles case where the agent doesnt have a response_model due to streaming
-	if isinstance(answer, str):  # ? check pydantic model file for more details about this change
-		answer = {expected_keys[0]: answer}  # ! is a little flimsy, must be fixed in the future
+	answer = response.content
+	if isinstance(answer, str):
+		answer = {expected_keys[0]: answer}
 		return answer
 	else:
 		answer = answer.dict()

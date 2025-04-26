@@ -2,9 +2,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 
-APP_TITLE = "DLM"
-APP_VERSION = "1.0.0"
-APP_DESCRIPTION = "DLM works to help your business scale"
+APP_TITLE = "Your App Title"
+APP_VERSION = "0.0.0"
+APP_DESCRIPTION = "Your app description"
 
 
 app = FastAPI(
@@ -18,8 +18,9 @@ from api import endpoints
 app.include_router(endpoints.router)
 
 origins = [
-    "http://localhost:5173",
-    "https://storm-api-b2zj.onrender.com"
+    "http://localhost:*",  # Local development
+    "https://*.example.com",  # Production domain
+    "https://*.onrender.com"  # Deployment platform
 ]
 
 app.add_middleware(
