@@ -1,10 +1,12 @@
 services:
   fastapi-app:
     build: .
-    container_name: dlm-app-container
+    container_name: agent-app-container
     ports:
       - "5001:5001"
     env_file:
       - .env
     environment:
       - PYTHONUNBUFFERED=1
+    volumes:
+      - .:/app
