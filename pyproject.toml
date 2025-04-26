@@ -1,5 +1,5 @@
 [project]
-name = "Your app name here"
+name = "app_name"
 version = "0.0.0"
 description = "Add your app description here"
 readme = "README.md"
@@ -7,6 +7,7 @@ requires-python = ">=3.9"
 dependencies = [
     "agno>=1.3.3",
     "fastapi>=0.115.12",
+    "openai>=1.75.0",
     "pydantic>=2.11.3",
     "uvicorn>=0.34.1",
 ]
