@@ -88,8 +88,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- Thanks to all contributors who have helped shape this project
-- Inspired by the need for fast and scalable agent implementations
+- Thanks to [agno](https://github.com/agno-agi/agno) for the incridle framework
+- Inspired by the need for fast and scalable agent implementations and deployment
 
 ## 📞 Contact
 
