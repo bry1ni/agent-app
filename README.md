@@ -33,11 +33,6 @@ cd agent-app
 uv sync
 ```
 
-3. Configure your application:
-   - Copy `config/default.yaml` to `config/config.yaml`
-   - Modify the settings according to your needs
-   - Or set environment variables (see Configuration section)
-
 4. Start the application:
 ```bash
 uvicorn app:app --reload
