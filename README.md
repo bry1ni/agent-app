@@ -9,16 +9,13 @@ A high-performance, scalable framework for implementing and deploying AI agents.
 - RESTful API interface
 - Docker support for easy deployment
 - Modular and extensible design
-- Built-in task management system
-- Tool integration framework
-- YAML-based configuration system
 
 ## 📦 Installation
 
 ### Prerequisites
 - Python 3.8+
 - Docker (optional, for containerized deployment)
-- pip or uv package manager
+- pip or uv package manager (uv is recommended)
 
 ### Quick Start
 
@@ -33,10 +30,22 @@ cd agent-app
 uv sync
 ```
 
-4. Start the application:
+3. Add your API keys to the `.env` file:
+```bash
+OPENAI_API_KEY=your_openai_api_key
+AGNO_API_KEY=your_agno_api_key
+```
+
+4. Start the application (Optional, for local testing):
 ```bash
 uvicorn app:app --reload
 ```
+
+5. Open Agno Playground (UI):
+- Ensure your AGNO_API_KEY is set in the `.env` file
+- Run main.py to start the Playground
+- Visit https://app.agno.com/playground/agents to see the Playground
+- Select localhost:7777 as the endpoint
 
 ### Docker Deployment
 ```bash
