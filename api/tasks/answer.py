@@ -1,6 +1,6 @@
 from src.agents.utils import extract_response_from_agent
 from src.agents.agent import agent
-from api.pydantic_models import Answer
+from src.models.pydantic_models import Answer
 
 def answer(request: str) -> Answer:
     

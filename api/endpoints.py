@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from api.pydantic_models import Query, Answer
+from src.models.pydantic_models import Query, Answer
 from api.tasks.answer import answer
 import logging
 

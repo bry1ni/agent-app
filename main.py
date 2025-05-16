@@ -9,4 +9,3 @@ app = Playground(
 
 if __name__ == "__main__":
     serve_playground_app("main:app", reload=True)
-    
