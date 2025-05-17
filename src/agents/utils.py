@@ -1,4 +1,5 @@
 from src.agents import AGENT_RESPONSE_KEYS
+from agno.agent import Agent
 
 
 def extract_response_from_agent(response, agent_name):
@@ -23,3 +24,7 @@ def extract_response_from_agent(response, agent_name):
 		answer = answer.dict()
 		answer = {key: answer.get(key) for key in expected_keys}
 		return answer
+	
+def getAgentAnswer(agent: Agent, query: str, structured_outputs: bool = True, stream: bool = False) -> str:
+    result = agent.run(query, structured_outputs=structured_outputs, stream=stream)
+    return result.content
