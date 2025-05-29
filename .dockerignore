@@ -41,7 +41,6 @@ cover/
 # Environments
 .env
 .venv
-uv.lock
 env/
 venv/
 ENV/
