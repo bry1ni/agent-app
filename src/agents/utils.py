@@ -28,3 +28,9 @@ def extract_response_from_agent(response, agent_name):
 def getAgentAnswer(agent: Agent, query: str, structured_outputs: bool = True, stream: bool = False) -> str:
     result = agent.run(query, structured_outputs=structured_outputs, stream=stream)
     return result.content
+
+def create_agent(**kwargs) -> Agent:
+    agent = Agent(
+        **kwargs
+    )
+    return agent
